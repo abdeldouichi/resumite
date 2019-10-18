@@ -1,6 +1,7 @@
-package com.resumite.resumite.data.entity;
+package com.resumite.resumite.data.entity.user;
 
 
+import com.resumite.resumite.data.entity.IoDate;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -27,9 +28,7 @@ public class User {
     private String role;
     @Column(name = "META")
     private String meta;
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "IO_DATE")
-    private IoDate ioDate;
+
 
     public User(){
         this.ioDate = new IoDate(new Date(),new Date(),"User");

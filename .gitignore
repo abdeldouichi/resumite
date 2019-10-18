@@ -1,33 +1,71 @@
-/target/
-!.mvn/wrapper/maven-wrapper.jar
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+*.checkstyle
+*.class
+*.classpath
+*.project
 *.iml
-*.ipr
-*.DS_Store
+*.scannerwork
 
-### NetBeans ###
-/nbproject/private/
+target/
+jsclient/
+eclipse-target/
+**/src/generated/
+**/tmp/
+.settings/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+target/
+
+# dependencies
+/node_modules
+package-lock.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
 /build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
 
-### ExternalFiles
-/mvnw
-/mvnw.cmd
-/.mvn/
-/resumite.iml
-/.git/
+# sonar scanner
+.scannerwork

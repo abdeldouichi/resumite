@@ -1,7 +1,7 @@
 package com.resumite.resumite.data.repository;
 
 
-import com.resumite.resumite.data.entity.User;
+import com.resumite.resumite.data.entity.user.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

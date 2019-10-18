@@ -1,6 +1,7 @@
 package com.resumite.resumite.data.entity;
 
 
+import com.resumite.resumite.data.entity.core.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -14,12 +15,9 @@ import java.util.Date;
 @Getter
 @Setter
 @Log
-public class AccountLink {
+public class AccountLink extends AbstractEntity {
 
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Id
-    @Column(name = "ACCOUNT_LINK_ID")
-    private long id;
+
 
     @Column(name = "ACCOUNT_LINK_NAME")
     private String name;
@@ -30,9 +28,10 @@ public class AccountLink {
     @Column(name = "ACCOUNT_LINK_TYPE")
     private String type;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "IO_DATE")
-    private IoDate ioDate;
+
+    public void initDate() {
+        this.ioDate = new IoDate(new Date(),new Date(),this.getClass().getName());
+    }
 
     public void markUpdate(){
         this.ioDate.setEditDate(new Date());

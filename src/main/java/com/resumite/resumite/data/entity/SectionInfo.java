@@ -1,5 +1,7 @@
 package com.resumite.resumite.data.entity;
 
+import com.resumite.resumite.data.entity.core.AbstractEntity;
+import com.resumite.resumite.data.entity.user.User;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -14,11 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @Log
-public class SectionInfo {
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Id
-    @Column(name = "SECTION_INFO_ID")
-    private long id;
+public class SectionInfo extends AbstractEntity {
 
     @Column(name = "TITLE")
     private String title;
@@ -41,16 +39,13 @@ public class SectionInfo {
     @Column(name = "TYPE")
     private String type;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "IO_DATE")
-    private IoDate ioDate;
 
     @OneToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     @JoinColumn(name="ACCOUNT_LINK_URL", referencedColumnName="SECTION_INFO_ID")
     private List<AccountLink> accountLinks;
 
-    public SectionInfo() {
-        this.ioDate = new IoDate(new Date(),new Date(),"Section "/*waiting for type*/);
+    public void initDate() {
+        this.ioDate = new IoDate(new Date(),new Date(),this.getClass().getName());
     }
     public void markUpdate(){
         this.ioDate.setEditDate(new Date());

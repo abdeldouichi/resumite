@@ -15,10 +15,7 @@ import java.util.Date;
 @Log
 public class IoDate {
 
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Id
-    @Column(name = "SECTION_INFO_ID")
-    private long id;
+
     @Column(name = "DATA_NAME")
     private String dataName;
     @Column(name = "CREATED_AT")

@@ -1,5 +1,7 @@
 package com.resumite.resumite.data.entity;
 
+import com.resumite.resumite.data.entity.core.AbstractEntity;
+import com.resumite.resumite.data.entity.user.User;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -15,12 +17,8 @@ import java.util.List;
 @Getter
 @Setter
 @Log
-public class UserData {
+public class UserData extends AbstractEntity {
 
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Id
-    @Column(name = "USER_DATA_ID")
-    private long id;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
@@ -57,12 +55,10 @@ public class UserData {
     @JoinColumn(name="ACCOUNT_LINK_URL", referencedColumnName="USER_DATA_ID")
     private List<AccountLink> accounts;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "IO_DATE")
-    private IoDate ioDate;
 
-    public UserData() {
-        this.ioDate = new IoDate(new Date(),new Date(),"User Details");
+
+    public void initDate() {
+        this.ioDate = new IoDate(new Date(),new Date(),this.getClass().getName());
     }
     public void markUpdate(){
         this.ioDate.setEditDate(new Date());
